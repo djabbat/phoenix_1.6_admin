@@ -1,0 +1,15 @@
+<div class="hero-container container-fluid rounded p-5 mb-4">
+  <div class="container text-center p-5">
+    <h1>Welcome to the Sample App</h1>
+    <h2>
+      This is the home page for the
+      <a href="#">Phoenix Tutorial</a>
+      sample application.
+    </h2>
+    <%= link "Sign up now!", to: Routes.signup_path(@conn, :new),
+    class: "btn btn-lg btn-primary" %>
+  </div>
+</div>
+<%= link img_tag(Routes.static_path(@conn, "/images/phoenix.png"),
+  alt: "Phoenix logo", width: 260, height: 40),
+  to: "https://phoenixframework.org/" %>

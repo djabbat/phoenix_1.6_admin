@@ -1,0 +1,23 @@
+<%= if Application.get_env(:sample_app, :app_env) == :dev do %>
+  <div class="debug_dump">
+    <span>
+      view module: <%= inspect(@conn.private.phoenix_view) %>
+    </span>
+    <span>
+      controller: <%= inspect(@conn.private.phoenix_controller) %>
+    </span>
+    <span>
+      action: <%= inspect(@conn.private.phoenix_action) %>
+    </span>
+    <span>
+      <%= unless Enum.empty?(@conn.params) do %>
+        params:
+          <%= for {key, val} <- @conn.params do %>
+            <span class="indent">
+              <%= "#{key}: #{inspect(val)}" %>
+            </span>
+          <% end %>
+      <% end %>
+    </span>
+  </div>
+<% end %>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+    <%= SampleAppWeb.DynamicTextHelpers.page_title(Enum.into(assigns,
+    %{view_module: @conn.private.phoenix_view, action: @conn.private.
+    phoenix_action})) %>
+    </title>
+    <%= render "_styles.html", assigns %>
+  </head>
+  <body>
+    <%= render "_header.html", assigns %>
+    <div class="container mt-4">
+      <%= for {message_type, message} <- get_flash(@conn) do %>
+        <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+      <% end %>
+      <%= @inner_content %>
+      <%= render "_footer.html", assigns %>
+      <%= render "_debug.html", assigns %>
+    </div>
+  <script type="text/javascript"
+  src={ Routes.static_path(@conn, "/assets/app.js")}></script>
+  </body>
+</html>

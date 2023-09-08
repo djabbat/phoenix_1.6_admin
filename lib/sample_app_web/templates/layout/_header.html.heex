@@ -1,0 +1,67 @@
+<header>
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <%= link "sample app", to: Routes.root_path(@conn, :home),
+      id: "logo", class: "navbar-brand" %>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+      data-bs-target="#navbarNav" aria-controls="navbarNav"
+      aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse ms-auto" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <%= link "Home", to: Routes.root_path(@conn, :home),
+            class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link "Help", to: Routes.help_path(@conn, :help),
+            class: "nav-link" %>
+          </li>
+          <%= if @current_user do %>
+            <li>
+              <%= link "Users", to: Routes.user_path(@conn, :index),
+              class: "nav-link" %>
+            </li>
+            <li class="nav-item dropdown" aria-haspopup="true"
+                aria-expanded="false">
+              <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle"
+                  href="#"id="navbarDarkDropdownMenuLink"
+                  role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Account
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-dark"
+                  aria-labelledby="navbarDarkDropdownMenuLink">
+                    <li>
+                      <%= link "Profile",
+                        to: Routes.user_path(@conn, :show, @current_user),
+                        class: "dropdown-item" %>
+                    </li>
+                    <li>
+                      <%= link "Settings",
+                        to: Routes.user_path(@conn, :edit, @current_user),
+                        class: "dropdown-item" %>
+                    </li>
+                    <li class="dropdown-divider"></li>
+                    <li>
+                      <%= link "Log out", to: Routes.logout_path(@conn, :delete),
+                        method: :delete, class: "dropdown-item" %>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+
+            </li>
+          <% else %>
+            <li>
+              <%= link "Log in", to: Routes.login_path(@conn, :new),
+                    class: "nav-link" %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>

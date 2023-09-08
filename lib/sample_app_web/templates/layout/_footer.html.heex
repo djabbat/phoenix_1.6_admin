@@ -1,0 +1,14 @@
+<footer class="footer">
+  <div class="container">
+    <small>
+      The <a href="#">Phoenix Tutorial</a>
+      by <a href="#">Binh Tran</a>
+    </small>
+    <nav>
+      <ul>
+        <li><%= link "About", to: Routes.about_path(@conn, :about) %></li>
+        <li><%= link "Contact", to: Routes.contact_path(@conn, :contact) %></li>
+      </ul>
+    </nav>
+  </div>
+</footer>
